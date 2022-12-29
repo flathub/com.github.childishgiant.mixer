@@ -39,7 +39,7 @@ modules:
         commit: fce63fcc85621c33dab85e32b349d707bf6d1552
     config-opts:
       - -Dglade_catalog=disabled
-      - -Dvapi=false
+      - -Dvapi=true
       - -Dtests=false
       - -Dexamples=false
   - name: mixer
