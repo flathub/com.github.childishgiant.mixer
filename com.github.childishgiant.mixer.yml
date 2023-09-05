@@ -34,8 +34,8 @@ modules:
     sources:
       - type: git
         url: https://gitlab.gnome.org/GNOME/libhandy.git
-        tag: 1.2.3
-        commit: e9ca4ac4b134bbd6ab91b6f916a915192fd3a465
+        tag: 1.8.2
+        commit: 48ae7ec0f7f9ee5f666da38b0e39e66874957166
     config-opts:
       - -Dglade_catalog=disabled
       - -Dvapi=true
