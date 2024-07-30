@@ -6,9 +6,9 @@ app-id: com.github.childishgiant.mixer
 # using the runtime and SDK provided by elementary.
 sdk: org.freedesktop.Sdk
 runtime: org.freedesktop.Platform
-runtime-version: '20.08'
+runtime-version: '23.08'
 base: io.elementary.BaseApp
-base-version: juno-20.08
+base-version: juno-23.08
 
 # This should match the exec line in your .desktop file and usually is the same
 # as your app ID
@@ -34,8 +34,8 @@ modules:
     sources:
       - type: git
         url: https://gitlab.gnome.org/GNOME/libhandy.git
-        tag: 1.2.3
-        commit: e9ca4ac4b134bbd6ab91b6f916a915192fd3a465
+        tag: 1.8.2
+        commit: 48ae7ec0f7f9ee5f666da38b0e39e66874957166
     config-opts:
       - -Dglade_catalog=disabled
       - -Dvapi=true
@@ -46,5 +46,5 @@ modules:
     sources:
       - type: git
         url: https://github.com/ChildishGiant/mixer.git
-        tag: v0.1.3
-        commit: 6f69ab678ca864a07722bb46feee828e8a48741c
+        tag: 1.1.0
+        commit: d706bae339223d76bec8f2ce5478540855db69d4
