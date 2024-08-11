@@ -49,6 +49,8 @@ modules:
         url: https://github.com/ChildishGiant/mixer.git
         # tag: 1.1.0
         commit: 86045cacc60dc7302e6e81c4f455bc0ce1eb6cf7
+      - type: patch
+        path: fix-appdata.patch
     post-install:
       - mkdir -p /app/share/icons/hicolor/scalable/apps && mv /app/share/icons/hicolor/128x128@2/apps/${FLATPAK_ID}.svg /app/share/icons/hicolor/scalable/apps/${FLATPAK_ID}.svg
       - find /app/share/icons/hicolor -type f -not -path "*scalable*" -not -path "*actions*" -name "*.svg" -delete
