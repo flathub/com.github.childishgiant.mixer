@@ -47,5 +47,5 @@ modules:
     sources:
       - type: git
         url: https://github.com/ChildishGiant/mixer.git
-        tag: 1.1.0
-        commit: d706bae339223d76bec8f2ce5478540855db69d4
+        # tag: 1.1.0
+        commit: 86045cacc60dc7302e6e81c4f455bc0ce1eb6cf7
