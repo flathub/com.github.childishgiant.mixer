@@ -6,9 +6,9 @@ app-id: com.github.childishgiant.mixer
 # using the runtime and SDK provided by elementary.
 sdk: org.freedesktop.Sdk
 runtime: org.freedesktop.Platform
-runtime-version: '20.08'
+runtime-version: '23.08'
 base: io.elementary.BaseApp
-base-version: juno-20.08
+base-version: juno-23.08
 
 # This should match the exec line in your .desktop file and usually is the same
 # as your app ID
@@ -18,6 +18,7 @@ command: com.github.childishgiant.mixer
 # not using hardware like webcams, making sound, or reading external files, we
 # only need permission to draw our app on screen using either X11 or Wayland.
 finish-args:
+  - '--device=all'
   - '--share=ipc'
   - '--socket=fallback-x11'
   - '--socket=wayland'
@@ -34,8 +35,8 @@ modules:
     sources:
       - type: git
         url: https://gitlab.gnome.org/GNOME/libhandy.git
-        tag: 1.2.3
-        commit: e9ca4ac4b134bbd6ab91b6f916a915192fd3a465
+        tag: 1.8.3
+        commit: 9b0071408ce86a3ef843806fddd723a85f6f2416
     config-opts:
       - -Dglade_catalog=disabled
       - -Dvapi=true
@@ -46,5 +47,10 @@ modules:
     sources:
       - type: git
         url: https://github.com/ChildishGiant/mixer.git
-        tag: v0.1.3
-        commit: 6f69ab678ca864a07722bb46feee828e8a48741c
+        # tag: 1.1.0
+        commit: 86045cacc60dc7302e6e81c4f455bc0ce1eb6cf7
+      - type: patch
+        path: fix-appdata.patch
+    post-install:
+      - mkdir -p /app/share/icons/hicolor/scalable/apps && mv /app/share/icons/hicolor/128x128@2/apps/${FLATPAK_ID}.svg /app/share/icons/hicolor/scalable/apps/${FLATPAK_ID}.svg
+      - find /app/share/icons/hicolor -type f -not -path "*scalable*" -not -path "*actions*" -name "*.svg" -delete

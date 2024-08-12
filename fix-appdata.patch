@@ -1,0 +1,37 @@
+From adfa18515ac071b1eba800e0653a0c9b543e6b72 Mon Sep 17 00:00:00 2001
+From: Sabri Ünal <yakushabb@gmail.com>
+Date: Sun, 11 Aug 2024 23:40:54 +0300
+Subject: [PATCH] Fix appdata papercuts
+
+---
+ data/com.github.childishgiant.mixer.appdata.xml.in | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/data/com.github.childishgiant.mixer.appdata.xml.in b/data/com.github.childishgiant.mixer.appdata.xml.in
+index fad05f1..48097c9 100644
+--- a/data/com.github.childishgiant.mixer.appdata.xml.in
++++ b/data/com.github.childishgiant.mixer.appdata.xml.in
+@@ -1,6 +1,6 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <!-- Copyright 2020 Allie Law <allie@cloverleaf.app> -->
+-<component type="desktop">
++<component type="desktop-application">
+   <id>com.github.childishgiant.mixer</id>
+   <metadata_license>CC0-1.0</metadata_license>
+   <project_license>GPL-3.0+</project_license>
+@@ -16,9 +16,12 @@
+   <provides>
+     <binary>com.github.childishgiant.mixer</binary>
+   </provides>
++  <launchable type="desktop-id">com.github.childishgiant.mixer.desktop</launchable>
+   <developer_name>Allie Law</developer_name>
+   <url type="homepage">https://github.com/childishgiant/mixer</url>
+   <url type="bugtracker">https://github.com/childishgiant/mixer/issues</url>
++  <url type="vcs-browser">https://github.com/childishgiant/mixer</url>
++  <url type="translate">https://github.com/ChildishGiant/mixer/tree/main/po</url>
+   <url type="help">https://github.com/childishgiant/mixer/issues</url>
+   <screenshots>
+     <screenshot type="default">
+--
+libgit2 1.7.2
+
