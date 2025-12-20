@@ -4,11 +4,16 @@ app-id: com.github.childishgiant.mixer
 # Instead of manually specifying a long list of build and runtime dependencies,
 # we can use a convenient pre-made runtime and SDK. For this example, we'll be
 # using the runtime and SDK provided by elementary.
-sdk: org.freedesktop.Sdk
 runtime: org.freedesktop.Platform
-runtime-version: '23.08'
+runtime-version: '24.08'
 base: io.elementary.BaseApp
-base-version: juno-23.08
+base-version: circe-24.08
+sdk: org.freedesktop.Sdk
+sdk-extensions:
+  - org.freedesktop.Sdk.Extension.vala
+build-options:
+  prepend-path: /usr/lib/sdk/vala/bin/
+  prepend-ld-library-path: /usr/lib/sdk/vala/lib
 
 # This should match the exec line in your .desktop file and usually is the same
 # as your app ID
@@ -30,6 +35,15 @@ finish-args:
 # If we had external dependencies that weren't included in our SDK, we would list
 # them here.
 modules:
+  - name: libgee
+    make-install-args:
+      - girdir=/app/share/gir-1.0
+      - typelibdir=/app/lib/girepository-1.0
+    sources:
+      - type: archive
+        url: https://download.gnome.org/sources/libgee/0.20/libgee-0.20.8.tar.xz
+        sha256: 189815ac143d89867193b0c52b7dc31f3aa108a15f04d6b5dca2b6adfad0b0ee
+
   - name: libhandy
     buildsystem: meson
     sources:
@@ -42,6 +56,7 @@ modules:
       - -Dvapi=true
       - -Dtests=false
       - -Dexamples=false
+
   - name: mixer
     buildsystem: meson
     sources:
@@ -52,5 +67,6 @@ modules:
       - type: patch
         path: fix-appdata.patch
     post-install:
-      - mkdir -p /app/share/icons/hicolor/scalable/apps && mv /app/share/icons/hicolor/128x128@2/apps/${FLATPAK_ID}.svg /app/share/icons/hicolor/scalable/apps/${FLATPAK_ID}.svg
+      - mkdir -p /app/share/icons/hicolor/scalable/apps
+      - mv /app/share/icons/hicolor/128x128@2/apps/${FLATPAK_ID}.svg /app/share/icons/hicolor/scalable/apps/${FLATPAK_ID}.svg
       - find /app/share/icons/hicolor -type f -not -path "*scalable*" -not -path "*actions*" -name "*.svg" -delete
