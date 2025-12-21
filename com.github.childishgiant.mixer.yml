@@ -36,9 +36,6 @@ finish-args:
 # them here.
 modules:
   - name: libgee
-    make-install-args:
-      - girdir=/app/share/gir-1.0
-      - typelibdir=/app/lib/girepository-1.0
     sources:
       - type: archive
         url: https://download.gnome.org/sources/libgee/0.20/libgee-0.20.8.tar.xz
